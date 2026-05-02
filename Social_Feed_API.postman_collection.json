@@ -6,6 +6,26 @@
 	},
 	"item": [
 		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5001/api/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get Feed (Page 1)",
 			"request": {
 				"method": "GET",
@@ -36,12 +56,12 @@
 			"response": []
 		},
 		{
-			"name": "Health Check",
+			"name": "Get Feed (Page 2 - 20 items)",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5001/api/health",
+					"raw": "http://localhost:5001/api/feed?page=2&limit=20",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -49,7 +69,17 @@
 					"port": "5001",
 					"path": [
 						"api",
-						"health"
+						"feed"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "limit",
+							"value": "20"
+						}
 					]
 				}
 			},

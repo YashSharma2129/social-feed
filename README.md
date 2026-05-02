@@ -62,9 +62,12 @@ npm run seed
 npm run dev
 ```
 
+### 6. Postman Collection
+A Postman collection is included in the repository (`Social_Feed_API.postman_collection.json`). You can import this directly into Postman to test the endpoints.
+
 ## 🌐 API Endpoints
 
-### Get Feed
+### 1. Get Feed
 - **URL**: `/api/feed`
 - **Method**: `GET`
 - **Query Params**:
@@ -74,6 +77,16 @@ npm run dev
 **Example Request:**
 ```bash
 curl "http://localhost:5001/api/feed?page=1&limit=10"
+```
+
+### 2. Health Check
+- **URL**: `/api/health`
+- **Method**: `GET`
+- **Description**: Returns the operational status of the API, MongoDB, and Redis.
+
+**Example Request:**
+```bash
+curl "http://localhost:5001/api/health"
 ```
 
 **First Response (from Database):**

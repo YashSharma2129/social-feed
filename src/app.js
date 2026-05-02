@@ -1,6 +1,6 @@
 require('dotenv').config();
 require('./config/redis');
-
+const mongoose = require('mongoose');
 const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
@@ -20,8 +20,16 @@ app.use(helmet());
 app.use(compression());
 
 // Basic health check route
-app.get('/', (req, res) => {
-  res.send('Social Feed API Running');
+app.get('/api/health', (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    message: 'Social Feed API is running smoothly.',
+    services: {
+      database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
+      redis: redisClient.isReady ? 'connected' : 'disconnected'
+    },
+    timestamp: new Date().toISOString()
+  });
 });
 
 // Routes

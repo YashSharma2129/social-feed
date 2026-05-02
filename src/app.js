@@ -1,5 +1,5 @@
 require('dotenv').config();
-require('./config/redis');
+const redisClient = require('./config/redis');
 const mongoose = require('mongoose');
 const express = require('express');
 const morgan = require('morgan');
@@ -18,6 +18,11 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(compression());
+
+// Root route
+app.get('/', (req, res) => {
+  res.send('Social Feed API Running');
+});
 
 // Basic health check route
 app.get('/api/health', (req, res) => {
